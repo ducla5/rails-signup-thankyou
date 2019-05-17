@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'RAILS_ENV=test bundle exec rspec spec/* — format html — out rspec_results/results.html — format RspecJunitFormatter — out rspec_results/results.xml'
+        sh 'rspec  --format html --out rspec_results/results.html --format RspecJunitFormatter --out rspec_results/results.xml'
       }
     }
     stage('Deploy') {
