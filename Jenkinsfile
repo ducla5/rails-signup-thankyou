@@ -9,22 +9,23 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''
-
-bundle install
-
-'''
+        sh 'bundle install'
       }
     }
     stage('Test') {
       steps {
-        sh 'bundle exec rspec .'
+        sh 'RAILS_ENV=test bundle exec rspec spec/* — format html — out rspec_results/results.html — format RspecJunitFormatter — out rspec_results/results.xml'
       }
     }
     stage('Deploy') {
       steps {
         input 'Are you sure about deploying new version ?'
       }
+    }
+  }
+  post {
+    always {
+      junit 'rspec_results/*.xml'
     }
   }
 }
