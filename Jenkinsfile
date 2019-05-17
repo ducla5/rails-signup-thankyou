@@ -16,5 +16,15 @@ bundle install
 '''
       }
     }
+    stage('Test') {
+      steps {
+        sh 'rspec .'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        input 'Are you sure about deploying new version ?'
+      }
+    }
   }
 }
