@@ -9,7 +9,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'sudo apt-get install build-essential'
         sh '''
 
 bundle install
