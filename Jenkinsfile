@@ -18,7 +18,7 @@ bundle install
     }
     stage('Test') {
       steps {
-        sh 'rspec .'
+        sh 'bundle exec rspec .'
       }
     }
     stage('Deploy') {
